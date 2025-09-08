@@ -3,7 +3,7 @@ name: Continuous Integration and Delivery with Github Actions
 on:
   push:
     branches:
-      - "master"
+      - "origin"
 jobs:
   build:
     runs-on: ubuntu-latest
