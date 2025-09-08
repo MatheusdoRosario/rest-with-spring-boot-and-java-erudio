@@ -23,14 +23,9 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Wait for server
-        run: |
-          sleep 20
-          curl --fail http://localhost:/swagger-ui.html
-
       - name: Build Application .jar
         working-directory: ./28_DockerizingOurApp/rest-with-spring-boot-and-java-erudio
-        run: mvn clean package -Dskiptests
+        run: mvn -X clean package
 
       - name: Docker Compose Build
         working-directory: ./28_DockerizingOurApp
