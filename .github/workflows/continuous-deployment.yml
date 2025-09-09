@@ -46,13 +46,13 @@ jobs:
       - name: List Docker Images
         run: docker images
 
-      - name: Tag and Push Docker Image to Amazon Container Registry - ECR
+      - name: Tag and Push to Docker Image to Amazon Container Registry - ECR
         run: |
-          docker tag matheusdorosario/rest-with-spring-boot-erudio:latest 069233348071.dkr.ecr.sa-east-1.amazonaws.com/erudio/rest-with-spring-boot-erudio-ecr:latest
-          docker tag matheusdorosario/rest-with-spring-boot-erudio:latest 069233348071.dkr.ecr.sa-east-1.amazonaws.com/erudio/rest-with-spring-boot-erudio-ecr:17587028987
+          docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.IMAGE_REPO_URL }}:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.IMAGE_REPO_URL }}:${{ github.run_id }}
           
-          docker push 069233348071.dkr.ecr.sa-east-1.amazonaws.com/erudio/rest-with-spring-boot-erudio-ecr:latest
-          docker push 069233348071.dkr.ecr.sa-east-1.amazonaws.com/erudio/rest-with-spring-boot-erudio-ecr:17587028987
+          docker push ${{ secrets.IMAGE_REPO_URL }}:latest
+          docker push ${{ secrets.IMAGE_REPO_URL }}:${{ github.run_id }}
 
       - name: Push to Docker Hub Container Registry
         run: |
