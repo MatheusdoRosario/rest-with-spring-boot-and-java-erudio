@@ -56,7 +56,7 @@ jobs:
           gcloud run deploy rest-with-spring-boot-erudio \
             --image ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest \
             --region us-central1 \
-            --plataform managed \
+            --platform managed \
             --allow-unauthenticated
 
       - name: Push to Docker Hub Container Registry
